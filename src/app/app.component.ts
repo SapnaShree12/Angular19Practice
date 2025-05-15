@@ -2,9 +2,12 @@ import { Component, ComponentRef, inject, TemplateRef, Type, viewChild, ViewCont
 import { WidgetComponent } from "./widget/widget/widget.component";
 import { NgComponentOutlet } from "@angular/common";
 import { WeatherContentComponent } from "./widget/weather-content/weather-content.component"
+import { AppRoutingModule } from "./app-routing-module";
+import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 @Component({
   selector: "app-root",
   template: `
+     <router-outlet></router-outlet>
     <img class="logo" src="./logo.svg" alt="Decoded Frontend" />
     <h1 class="page-title">ngContentOutlet Demo</h1>
     <ng-template #contentTpl>
@@ -21,7 +24,7 @@ import { WeatherContentComponent } from "./widget/weather-content/weather-conten
       </section>
     </main>
   `,
-  imports: [NgComponentOutlet, WeatherContentComponent]
+  imports: [NgComponentOutlet, WeatherContentComponent,RouterOutlet]
 })
 export class AppComponent {
   vcr = inject(ViewContainerRef);

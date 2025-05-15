@@ -1,0 +1,23 @@
+<!-- template-driven-forms -->
+<form #actorForm="ngForm" class="whole-form">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="des" class="form-control"
+           required minlength="4"
+           [(ngModel)]="actor.name" #name="ngModel">
+
+    <!-- Validation Messages -->
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class=" errors alert alert-danger">
+      <div *ngIf="name.errors?.['required']">
+        Name is required.
+      </div>
+      <div *ngIf="name.errors?.['minlength']">
+        Name must be at least 4 characters long.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="actorForm.invalid" class="btn btn-primary">Submit</button>
+</form>
